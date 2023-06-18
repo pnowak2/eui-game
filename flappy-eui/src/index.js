@@ -4,6 +4,7 @@ import MenuScene from './scenes/menu.scene';
 import PreloadScene from './scenes/preload.scene';
 import ScoreScene from './scenes/score.scene';
 import PauseScene from './scenes/pause.scene';
+import SplashScene from './scenes/splash.scene';
 
 const WIDTH = 800;
 const HEIGHT = 600;
@@ -17,6 +18,7 @@ const SHARED_CONFIG = {
 
 const SCENES = [
   PreloadScene,
+  SplashScene,
   MenuScene,
   ScoreScene,
   PlayScene,
@@ -29,7 +31,7 @@ const initScenes = () => SCENES.map(createScene);
 const config = {
   type: Phaser.AUTO,
   ...SHARED_CONFIG,
-  pixelArt: true,
+  pixelArt: false,
   physics: {
     default: 'arcade',
     arcade: {

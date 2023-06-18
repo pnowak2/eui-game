@@ -6,6 +6,7 @@ class PreloadScene extends BaseScene {
   }
 
   preload() {
+    this.load.image('splash', 'assets/eui-logo.svg');
     this.load.image('sky', 'assets/sky.png');
     this.load.image('pipe', 'assets/pipe.png');
     this.load.spritesheet('bird', 'assets/birdSprite.png', {
@@ -17,7 +18,7 @@ class PreloadScene extends BaseScene {
   }
 
   create() {
-    this.scene.start('MenuScene');
+    this.scene.start('SplashScene');
   }
 }
 

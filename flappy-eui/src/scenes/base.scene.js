@@ -17,6 +17,16 @@ class BaseScene extends Phaser.Scene {
   create() {
     this.add.image(0, 0, 'sky').setOrigin(0, 0);
 
+    const sceneWidth = this.cameras.main.width;
+    const sceneHeight = this.cameras.main.height;
+
+    const graphics = this.add.graphics();
+    const startColor = 0x4786da;
+    const endColor = 0x1b4986;
+
+    graphics.fillGradientStyle(startColor, startColor, endColor, endColor, 1);
+    graphics.fillRect(0, 0, sceneWidth, sceneHeight);
+
     if (this.config.canGoBack) {
       const backBtn = this.add.image(
         this.config.width - 10,
