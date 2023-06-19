@@ -72,11 +72,6 @@ class PlayScene extends BaseScene {
     this.checkGameStatus();
     this.recyclePipes();
     this.recycleClouds();
-    this.animateCity();
-  }
-
-  animateCity() {
-    this.city.tilePositionX += 0.3;
   }
 
   createCity() {
