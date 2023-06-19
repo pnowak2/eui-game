@@ -23,7 +23,8 @@ class BaseScene extends Phaser.Scene {
 
     const graphics = this.add.graphics();
     const startColor = 0x1b4986;
-    const endColor = 0x4786da;
+    // const endColor = 0x4786da;
+    const endColor = 0xbfd0e4;
 
     graphics.fillGradientStyle(startColor, startColor, endColor, endColor, 1);
     graphics.fillRect(0, 0, sceneWidth, sceneHeight);
