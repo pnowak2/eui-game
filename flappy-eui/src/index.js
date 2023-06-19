@@ -17,8 +17,8 @@ const SHARED_CONFIG = {
 };
 
 const SCENES = [
-  PreloadScene,
   SplashScene,
+  PreloadScene,
   MenuScene,
   ScoreScene,
   PlayScene,
@@ -31,7 +31,7 @@ const initScenes = () => SCENES.map(createScene);
 const config = {
   type: Phaser.AUTO,
   ...SHARED_CONFIG,
-  pixelArt: true,
+  pixelArt: false,
   physics: {
     default: 'arcade',
     arcade: {

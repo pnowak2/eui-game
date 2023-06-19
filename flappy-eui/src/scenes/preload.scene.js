@@ -6,7 +6,6 @@ class PreloadScene extends BaseScene {
   }
 
   preload() {
-    this.load.image('splash', 'assets/eui-logo.svg');
     this.load.image('cloud', 'assets/cloud.png');
     this.load.image('city', 'assets/city.png');
     this.load.image('pipe1', 'assets/pipes/pipe1.png');
@@ -38,7 +37,7 @@ class PreloadScene extends BaseScene {
   }
 
   create() {
-    this.scene.start('SplashScene');
+    this.scene.start('PlayScene');
   }
 }
 

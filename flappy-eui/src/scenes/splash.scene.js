@@ -6,6 +6,10 @@ class SplashScene extends BaseScene {
     super('SplashScene', config);
   }
 
+  preload(){
+    this.load.image('splash', 'assets/eui-logo.svg');
+  }
+
   create() {
     this.cameras.main.setBackgroundColor('#333');
     
@@ -31,7 +35,7 @@ class SplashScene extends BaseScene {
     });
 
     setTimeout(() => {
-      this.scene.start('PlayScene');
+      this.scene.start('PreloadScene');
     }, 3000);
   }
 }

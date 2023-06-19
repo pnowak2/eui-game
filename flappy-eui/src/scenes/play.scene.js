@@ -111,6 +111,8 @@ class PlayScene extends BaseScene {
     .setScale(3)
     .setOrigin(0);
 
+    this.bird.texture.setFilter(Phaser.Textures.FilterMode.NEAREST);
+
 
     this.bird.setBodySize(this.bird.width, this.bird.height - 8)
 
