@@ -31,7 +31,7 @@ class SplashScene extends BaseScene {
     });
 
     setTimeout(() => {
-      this.scene.start('MenuScene');
+      this.scene.start('PlayScene');
     }, 3000);
   }
 }
