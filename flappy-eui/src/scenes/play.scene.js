@@ -12,6 +12,9 @@ class PlayScene extends BaseScene {
     this.flapVelocity = 380;
     this.pipesToRender = 4;
 
+    this.flapSound = null;
+    this.hitSound = null;
+    this.pointSound = null;
     this.city = null;
     this.clouds = null;
     this.bird = null;
@@ -45,6 +48,7 @@ class PlayScene extends BaseScene {
 
     super.create();
 
+    this.initializeSound();
     this.createCity();
     this.createClouds();
     this.createBird();
@@ -74,6 +78,12 @@ class PlayScene extends BaseScene {
     this.checkGameStatus();
     this.recyclePipes();
     this.recycleClouds();
+  }
+
+  initializeSound() {
+    this.flapSound = this.sound.add('flap');
+    this.hitSound = this.sound.add('hit');
+    this.pointSound = this.sound.add('point');
   }
 
   createInstructions() {
@@ -271,6 +281,7 @@ class PlayScene extends BaseScene {
     if (this.isPaused) { return; }
 
     this.bird.body.velocity.y -= this.flapVelocity;
+    this.flapSound.play();
   }
 
   saveBestScore() {
@@ -285,6 +296,7 @@ class PlayScene extends BaseScene {
   gameOver() {
     this.physics.pause();
     this.bird.setTint(0xff0000);
+    this.hitSound.play();
 
     this.saveBestScore();
 
@@ -308,6 +320,7 @@ class PlayScene extends BaseScene {
     this.bestScore = this.score;
 
     this.scoreText.setText(`Score: ${this.score}`);
+    this.pointSound.play();
   }
 
   increaseDifficulty() {
