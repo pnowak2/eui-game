@@ -79,7 +79,7 @@ class PlayScene extends BaseScene {
   createInstructions() {
     this.instructionText = this.add.text(this.config.width / 2, this.config.height / 2, 'Click or Space', {
       fontFamily: 'Arial',
-      fontSize: '32px',
+      fontSize: '24px',
       fontWeight: 'normal',
       fill: '#fff'
     }).setOrigin(0.5, 0.5);
