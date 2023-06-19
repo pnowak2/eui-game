@@ -5,6 +5,8 @@ class SplashScene extends BaseScene {
   constructor(config) {
     super('SplashScene', config);
 
+    this.music = null;
+
     this.texts = [
       'Loading eUI tokens..',
       'Generating eUI awesomness..',
@@ -17,9 +19,13 @@ class SplashScene extends BaseScene {
 
   preload() {
     this.load.image('splash', 'assets/eui-logo.svg');
+    this.load.audio('music', 'assets/music.mp3');
   }
 
   create() {
+    this.music = this.sound.add('music');
+    this.music.play({ loop: true });
+
     this.cameras.main.setBackgroundColor('#333');
 
     const logo = this.add

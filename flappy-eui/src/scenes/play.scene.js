@@ -294,9 +294,10 @@ class PlayScene extends BaseScene {
   }
 
   gameOver() {
+    this.hitSound.play();
+
     this.physics.pause();
     this.bird.setTint(0xff0000);
-    this.hitSound.play();
 
     this.saveBestScore();
 
