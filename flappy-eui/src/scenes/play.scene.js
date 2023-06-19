@@ -45,7 +45,6 @@ class PlayScene extends BaseScene {
 
     super.create();
 
-    this.createInstructions();
     this.createCity();
     this.createClouds();
     this.createBird();
@@ -53,6 +52,7 @@ class PlayScene extends BaseScene {
     this.createGround();
     this.createColliders();
     this.createScore();
+    this.createInstructions();
     this.handleInputs();
     this.listenToEvents();
 
