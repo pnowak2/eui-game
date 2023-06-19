@@ -12,9 +12,11 @@ class PlayScene extends BaseScene {
     this.flapVelocity = 380;
     this.pipesToRender = 4;
 
+    this.city = null;
+    this.clouds = null;
     this.bird = null;
     this.pipes = null;
-    this.pipeVariantsCount = 16;
+    this.pipeVariantsCount = 20;
     this.score = 0;
     this.scoreText = '';
     this.difficutlyText = '';
@@ -43,8 +45,11 @@ class PlayScene extends BaseScene {
 
     super.create();
 
+    this.createCity();
+    this.createClouds();
     this.createBird();
     this.createPipes();
+    this.createGround();
     this.createColliders();
     this.createScore();
     this.createPause();
@@ -66,10 +71,44 @@ class PlayScene extends BaseScene {
   update() {
     this.checkGameStatus();
     this.recyclePipes();
+    this.recycleClouds();
+    this.animateCity();
   }
 
-  createBG() {
-    this.add.image(0, 0, 'sky').setOrigin(0, 0);
+  animateCity() {
+    this.city.tilePositionX += 0.3;
+  }
+
+  createCity() {
+     this.city = this.add
+      .tileSprite(0, this.config.height, this.config.width, 381, 'city')
+      .setAlpha(0.2)
+      .setOrigin(0, 1)
+  }
+
+  createClouds() {
+    this.clouds = this.physics.add.group();
+    this.clouds.create(20, 40, 'cloud')
+      .setScale(0.5)
+      .setTint(0xffffff)
+      .setAlpha(0.2)
+      .setOrigin(0, 0);
+
+    this.clouds.create(0.5* this.config.width + 100, +20, 'cloud')
+      .setScale(0.2)
+      .setTint(0xffffff)
+      .setAlpha(0.3)
+      .setOrigin(1, 0);
+
+    this.clouds.create(this.config.width + 100  , 120, 'cloud')
+      .setScale(0.3)
+      .setTint(0xffffff)
+      .setAlpha(0.3)
+      .setOrigin(1, 0);
+
+
+
+    this.clouds.setVelocityX(-90);
   }
 
   createBird() {
@@ -216,6 +255,20 @@ class PlayScene extends BaseScene {
     });
   }
 
+  recycleClouds() {
+    this.clouds.getChildren().forEach((cloud) => {
+      if (cloud.getBounds().right <= 0) {
+        cloud.body.x = this.config.width + Phaser.Math.Between(0, 150);
+
+        let randomInteger = Phaser.Math.Between(2, 8);
+        let randomDecimal = randomInteger / 10;
+        let randomNumber = Phaser.Math.Clamp(randomDecimal, 0.2, 0.8);
+
+        cloud.body.scale = Phaser.Math.Between(randomNumber);
+      }
+    });
+  }
+
   flap() {
     if (this.isPaused)  { return; }
 
@@ -303,6 +356,18 @@ class PlayScene extends BaseScene {
       this.physics.resume();
       this.scene.resume();
     }
+  }
+
+  createGround() {
+   const ground = this.add
+    .rectangle(0, this.config.height, this.config.width, 24, 0x467a39)
+    .setOrigin(0, 1);
+   this.add
+    .rectangle(0, ground.getBounds().top, this.config.width, 2, 0x3f6e33)
+    .setOrigin(0, 1);
+   this.add
+    .rectangle(0, this.config.height, this.config.width, 4, 0x38622e)
+    .setOrigin(0, 1);
   }
 }
 
