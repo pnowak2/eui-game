@@ -90,23 +90,18 @@ class PlayScene extends BaseScene {
     this.clouds = this.physics.add.group();
     this.clouds.create(20, 40, 'cloud')
       .setScale(0.5)
-      .setTint(0xffffff)
       .setAlpha(0.2)
       .setOrigin(0, 0);
 
     this.clouds.create(0.5* this.config.width + 100, +20, 'cloud')
       .setScale(0.2)
-      .setTint(0xffffff)
-      .setAlpha(0.3)
+      .setAlpha(0.2)
       .setOrigin(1, 0);
 
     this.clouds.create(this.config.width + 100  , 120, 'cloud')
       .setScale(0.3)
-      .setTint(0xffffff)
-      .setAlpha(0.3)
+      .setAlpha(0.2)
       .setOrigin(1, 0);
-
-
 
     this.clouds.setVelocityX(-90);
   }
