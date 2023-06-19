@@ -116,7 +116,9 @@ class PlayScene extends BaseScene {
 
     this.bird.setBodySize(this.bird.width, this.bird.height - 8)
 
-    this.bird.body.gravity.y = 600;
+    setTimeout(() => {
+      this.bird.body.gravity.y = 600;
+    }, 1000);
     this.bird.setCollideWorldBounds(true);
   }
 
@@ -185,7 +187,7 @@ class PlayScene extends BaseScene {
 
   createScore() {
     this.score = 0;
-    const bestScore = localStorage.getItem('bestScore');
+    const bestScore = localStorage.getItem('eui-flappy:bestScore');
 
     this.scoreText = this.add.text(16, 16, `Score: ${this.score}`, {
       fontFamily: 'Arial',
@@ -264,11 +266,11 @@ class PlayScene extends BaseScene {
   }
 
   saveBestScore() {
-    const bestScoreString = localStorage.getItem('bestScore');
+    const bestScoreString = localStorage.getItem('eui-flappy:bestScore');
     const bestScore = bestScoreString && parseInt(bestScoreString, 10);
 
     if (!bestScore || this.score > bestScore) {
-      localStorage.setItem('bestScore', this.score);
+      localStorage.setItem('eui-flappy:bestScore', this.score);
     }
   }
 

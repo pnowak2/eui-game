@@ -1,9 +1,7 @@
 import Phaser from 'phaser';
 import PlayScene from './scenes/play.scene';
-import MenuScene from './scenes/menu.scene';
 import PreloadScene from './scenes/preload.scene';
 import ScoreScene from './scenes/score.scene';
-import PauseScene from './scenes/pause.scene';
 import SplashScene from './scenes/splash.scene';
 
 const WIDTH = 800;
@@ -19,10 +17,8 @@ const SHARED_CONFIG = {
 const SCENES = [
   SplashScene,
   PreloadScene,
-  MenuScene,
-  ScoreScene,
   PlayScene,
-  PauseScene,
+  ScoreScene,
 ];
 
 const createScene = Scene => new Scene(SHARED_CONFIG);
