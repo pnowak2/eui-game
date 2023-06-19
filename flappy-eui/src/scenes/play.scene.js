@@ -19,7 +19,6 @@ class PlayScene extends BaseScene {
     this.pipeVariantsCount = 20;
     this.score = 0;
     this.scoreText = '';
-    this.difficutlyText = '';
     this.bestScoreText = '';
     this.isPaused = false;
 
@@ -52,14 +51,15 @@ class PlayScene extends BaseScene {
     this.createGround();
     this.createColliders();
     this.createScore();
-    this.createPause();
     this.handleInputs();
     this.listenToEvents();
+
+    this.pause();
 
     this.anims.create({
       key: 'fly',
       frames: this.anims.generateFrameNumbers('bird', {
-        start: 8, 
+        start: 8,
         end: 15,
       }),
       frameRate: 16,
@@ -75,7 +75,7 @@ class PlayScene extends BaseScene {
   }
 
   createCity() {
-     this.city = this.add
+    this.city = this.add
       .tileSprite(0, this.config.height, this.config.width, 381, 'city')
       .setAlpha(0.2)
       .setOrigin(0, 1)
@@ -88,12 +88,12 @@ class PlayScene extends BaseScene {
       .setAlpha(0.2)
       .setOrigin(0, 0);
 
-    this.clouds.create(0.5* this.config.width + 100, +20, 'cloud')
+    this.clouds.create(0.5 * this.config.width + 100, +20, 'cloud')
       .setScale(0.2)
       .setAlpha(0.2)
       .setOrigin(1, 0);
 
-    this.clouds.create(this.config.width + 100  , 120, 'cloud')
+    this.clouds.create(this.config.width + 100, 120, 'cloud')
       .setScale(0.3)
       .setAlpha(0.2)
       .setOrigin(1, 0);
@@ -107,9 +107,9 @@ class PlayScene extends BaseScene {
       this.config.startPosition.y,
       'bird'
     )
-    .setFlipX(true)
-    .setScale(3)
-    .setOrigin(0);
+      .setFlipX(true)
+      .setScale(3)
+      .setOrigin(0);
 
     this.bird.texture.setFilter(Phaser.Textures.FilterMode.NEAREST);
 
@@ -198,35 +198,31 @@ class PlayScene extends BaseScene {
       fontSize: '20px',
       fill: '#fff'
     });
-    this.difficutlyText = this.add.text(16, 78, `Difficulty: ${this.currentDifficulty}`, {
-      fontFamily: 'Arial',
-      fontSize: '20px',
-      fill: '#fff'
-    });
   }
 
-  createPause() {
+  pause() {
+    this.isPaused = true;
+    this.physics.pause();
+  }
+
+  resume() {
     this.isPaused = false;
-    const pauseBtn = this.add.image(
-      this.config.width - 10,
-      this.config.height - 10,
-      'pause')
-      .setInteractive()
-      .setScale(2)
-      .setOrigin(1, 1);
-
-    pauseBtn.on('pointerdown', () => {
-      this.isPaused = true;
-      this.physics.pause();
-      this.scene.pause();
-      this.scene.launch('PauseScene');
-    })
-
+    this.physics.resume();
   }
 
   handleInputs() {
     this.input.on('pointerdown', this.flap, this);
+    this.input.on('pointerup', () => {
+      if (this.isPaused) {
+        this.resume();
+      }
+    }, this);
     this.input.keyboard.on('keydown-SPACE', this.flap, this);
+    this.input.keyboard.on('keydown-SPACE', () => {
+      if (this.isPaused) {
+        this.resume();
+      }
+    }, this);
   }
 
   recyclePipes() {
@@ -262,7 +258,7 @@ class PlayScene extends BaseScene {
   }
 
   flap() {
-    if (this.isPaused)  { return; }
+    if (this.isPaused) { return; }
 
     this.bird.body.velocity.y -= this.flapVelocity;
   }
@@ -305,16 +301,15 @@ class PlayScene extends BaseScene {
   }
 
   increaseDifficulty() {
-    if(this.score === 5) {
+    if (this.score === 5) {
       this.currentDifficulty = 'normal'
-    } 
-    
-    if(this.score === 10) {
-      this.currentDifficulty = 'hard'
     }
 
-    this.difficutlyText.setText(`Difficulty: ${this.currentDifficulty}`);
+    if (this.score === 10) {
+      this.currentDifficulty = 'hard'
+    }
   }
+
   listenToEvents() {
     if (this.pauseEvent) { return }
 
@@ -351,15 +346,15 @@ class PlayScene extends BaseScene {
   }
 
   createGround() {
-   const ground = this.add
-    .rectangle(0, this.config.height, this.config.width, 24, 0x467a39)
-    .setOrigin(0, 1);
-   this.add
-    .rectangle(0, ground.getBounds().top, this.config.width, 2, 0x3f6e33)
-    .setOrigin(0, 1);
-   this.add
-    .rectangle(0, this.config.height, this.config.width, 4, 0x38622e)
-    .setOrigin(0, 1);
+    const ground = this.add
+      .rectangle(0, this.config.height, this.config.width, 24, 0x467a39)
+      .setOrigin(0, 1);
+    this.add
+      .rectangle(0, ground.getBounds().top, this.config.width, 2, 0x3f6e33)
+      .setOrigin(0, 1);
+    this.add
+      .rectangle(0, this.config.height, this.config.width, 4, 0x38622e)
+      .setOrigin(0, 1);
   }
 }
 
