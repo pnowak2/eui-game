@@ -16,6 +16,8 @@ class PreloadScene extends BaseScene {
     this.load.image('pipe6', 'assets/pipes/pipe6.png');
     this.load.image('pipe7', 'assets/pipes/pipe7.png');
     this.load.image('pipe8', 'assets/pipes/pipe8.png');
+    this.load.image('pipe9', 'assets/pipes/pipe9.png');
+    this.load.image('pipe10', 'assets/pipes/pipe10.png');
     this.load.spritesheet('bird', 'assets/birdSprite.png', {
       frameWidth: 16,
       frameHeight: 16
