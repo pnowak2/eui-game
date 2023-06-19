@@ -18,6 +18,7 @@ class PlayScene extends BaseScene {
     this.pipes = null;
     this.pipeVariantsCount = 20;
     this.score = 0;
+    this.instructionText = '';
     this.scoreText = '';
     this.bestScoreText = '';
     this.isPaused = false;
@@ -44,6 +45,7 @@ class PlayScene extends BaseScene {
 
     super.create();
 
+    this.createInstructions();
     this.createCity();
     this.createClouds();
     this.createBird();
@@ -72,6 +74,15 @@ class PlayScene extends BaseScene {
     this.checkGameStatus();
     this.recyclePipes();
     this.recycleClouds();
+  }
+
+  createInstructions() {
+    this.instructionText = this.add.text(this.config.width / 2, this.config.height / 2, 'Click or Space', {
+      fontFamily: 'Arial',
+      fontSize: '32px',
+      fontWeight: 'normal',
+      fill: '#fff'
+    }).setOrigin(0.5, 0.5);
   }
 
   createCity() {
@@ -113,12 +124,8 @@ class PlayScene extends BaseScene {
 
     this.bird.texture.setFilter(Phaser.Textures.FilterMode.NEAREST);
 
-
     this.bird.setBodySize(this.bird.width, this.bird.height - 8)
-
-    setTimeout(() => {
-      this.bird.body.gravity.y = 600;
-    }, 1000);
+    this.bird.body.gravity.y = 600;
     this.bird.setCollideWorldBounds(true);
   }
 
@@ -197,7 +204,7 @@ class PlayScene extends BaseScene {
     });
     this.bestScoreText = this.add.text(16, 52, `Best score: ${bestScore || 0}`, {
       fontFamily: 'Arial',
-      fontSize: '20px',
+      fontSize: '18px',
       fill: '#fff'
     });
   }
@@ -210,6 +217,7 @@ class PlayScene extends BaseScene {
   resume() {
     this.isPaused = false;
     this.physics.resume();
+    this.instructionText.setText('');
   }
 
   handleInputs() {
