@@ -8,7 +8,14 @@ class PreloadScene extends BaseScene {
   preload() {
     this.load.image('splash', 'assets/eui-logo.svg');
     this.load.image('sky', 'assets/sky.png');
-    this.load.image('pipe', 'assets/pipe.png');
+    this.load.image('pipe1', 'assets/pipes/pipe1.png');
+    this.load.image('pipe2', 'assets/pipes/pipe2.png');
+    this.load.image('pipe3', 'assets/pipes/pipe3.png');
+    this.load.image('pipe4', 'assets/pipes/pipe4.png');
+    this.load.image('pipe5', 'assets/pipes/pipe5.png');
+    this.load.image('pipe6', 'assets/pipes/pipe6.png');
+    this.load.image('pipe7', 'assets/pipes/pipe7.png');
+    this.load.image('pipe8', 'assets/pipes/pipe8.png');
     this.load.spritesheet('bird', 'assets/birdSprite.png', {
       frameWidth: 16,
       frameHeight: 16

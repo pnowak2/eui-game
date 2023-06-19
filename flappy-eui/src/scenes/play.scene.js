@@ -14,6 +14,7 @@ class PlayScene extends BaseScene {
 
     this.bird = null;
     this.pipes = null;
+    this.pipeVariantsCount = 8;
     this.score = 0;
     this.scoreText = '';
     this.difficutlyText = '';
@@ -91,14 +92,15 @@ class PlayScene extends BaseScene {
   createPipes() {
     this.pipes = this.physics.add.group();
 
+
     for (let i = 0; i < this.pipesToRender; i++) {
       const upperPipe = this.pipes
-        .create(0, 0, 'pipe')
+        .create(0, 0, `pipe1`)
         .setImmovable(true)
         .setOrigin(0, 1);
 
       const lowerPipe = this.pipes
-        .create(0, 0, 'pipe')
+        .create(0, 0, `pipe1`)
         .setImmovable(true)
         .setOrigin(0, 0);
 
@@ -121,6 +123,16 @@ class PlayScene extends BaseScene {
 
     lPipe.x = uPipe.x;
     lPipe.y = uPipe.y + pipeVerticalDistance;
+
+    const pipeNumber = Phaser.Math.Between(1, this.pipeVariantsCount);
+    const pipeName = `pipe${pipeNumber}`;
+
+    const image = this.scene.scene.textures.get(pipeName);
+
+    uPipe.setTexture(pipeName)
+    lPipe.setTexture(pipeName)
+    uPipe.setBodySize(image.width, image.height)
+    lPipe.setBodySize(image.width, image.height)
   }
 
   getRightMostPipe() {
