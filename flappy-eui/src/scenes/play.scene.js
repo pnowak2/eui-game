@@ -121,18 +121,21 @@ class PlayScene extends BaseScene {
     uPipe.x = rightMostX + pipeHorizontalDistance;
     uPipe.y = pipeVerticalPosition;
 
-    lPipe.x = uPipe.x;
+    lPipe.x = uPipe.x + Phaser.Math.Between(-150, 150);
     lPipe.y = uPipe.y + pipeVerticalDistance;
 
-    const pipeNumber = Phaser.Math.Between(1, this.pipeVariantsCount);
-    const pipeName = `pipe${pipeNumber}`;
+    const lPipeNumber = Phaser.Math.Between(1, this.pipeVariantsCount);
+    const uPipeNumber = Phaser.Math.Between(1, this.pipeVariantsCount);
+    const lPipeName = `pipe${lPipeNumber}`;
+    const uPipeName = `pipe${uPipeNumber}`;
 
-    const image = this.scene.scene.textures.get(pipeName);
+    const lImage = this.scene.scene.textures.get(lPipeName);
+    const uImage = this.scene.scene.textures.get(uPipeName);
 
-    uPipe.setTexture(pipeName)
-    lPipe.setTexture(pipeName)
-    uPipe.setBodySize(image.width, image.height)
-    lPipe.setBodySize(image.width, image.height)
+    uPipe.setTexture(uPipeName)
+    uPipe.setBodySize(uImage.width, uImage.height)
+    lPipe.setTexture(lPipeName)
+    lPipe.setBodySize(lImage.width, lImage.height)
   }
 
   getRightMostPipe() {
@@ -154,19 +157,20 @@ class PlayScene extends BaseScene {
     const bestScore = localStorage.getItem('bestScore');
 
     this.scoreText = this.add.text(16, 16, `Score: ${this.score}`, {
-      fontFamily: 'sans-serif',
+      fontFamily: 'Arial',
       fontSize: '32px',
-      fill: '#000'
+      fontWeight: 'normal',
+      fill: '#fff'
     });
     this.bestScoreText = this.add.text(16, 52, `Best score: ${bestScore || 0}`, {
-      fontFamily: 'sans-serif',
+      fontFamily: 'Arial',
       fontSize: '20px',
-      fill: '#000'
+      fill: '#fff'
     });
     this.difficutlyText = this.add.text(16, 78, `Difficulty: ${this.currentDifficulty}`, {
-      fontFamily: 'sans-serif',
+      fontFamily: 'Arial',
       fontSize: '20px',
-      fill: '#000'
+      fill: '#fff'
     });
   }
 
