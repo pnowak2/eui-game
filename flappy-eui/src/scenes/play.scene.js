@@ -357,6 +357,7 @@ class PlayScene extends BaseScene {
     }
 
     if(this.score >= 100) {
+      this.saveBestScore();
       this.scene.start('WinScene');
     }
   }
