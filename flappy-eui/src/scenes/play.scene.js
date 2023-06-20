@@ -27,6 +27,7 @@ class PlayScene extends BaseScene {
     this.instructionText = '';
     this.pointsInfo = '';
     this.scoreText = '';
+    this.levelUpText = '';
     this.bestScoreText = '';
     this.isPaused = false;
 
@@ -37,12 +38,16 @@ class PlayScene extends BaseScene {
         pipeVerticalDistanceRange: [200, 250]
       },
       normal: {
+        pipeHorizontalDistanceRange: [400, 500],
+        pipeVerticalDistanceRange: [180, 230]
+      },
+      medium: {
         pipeHorizontalDistanceRange: [350, 450],
-        pipeVerticalDistanceRange: [170, 220]
+        pipeVerticalDistanceRange: [160, 220]
       },
       hard: {
         pipeHorizontalDistanceRange: [300, 400],
-        pipeVerticalDistanceRange: [160, 200]
+        pipeVerticalDistanceRange: [140, 200]
       }
     }
   }
@@ -242,6 +247,15 @@ class PlayScene extends BaseScene {
       fontSize: '17px',
       fill: '#fff'
     });
+
+    this.levelUpText = this.add.text(
+      ...this.screenCenter,
+      '',{
+        fontFamily: 'Arial',
+        fontSize: '24px',
+        fill: '#fff'
+      }
+    ).setOrigin(0.5);
   }
 
   pause() {
@@ -352,17 +366,56 @@ class PlayScene extends BaseScene {
 
   increaseDifficulty() {
     if (this.score === 10) {
+      this.notifyLevelUp('Keep flapping..');
+    }
+
+    if (this.score === 20) {
+      this.notifyLevelUp();
       this.currentDifficulty = 'normal'
     }
 
     if (this.score === 30) {
+      this.notifyLevelUp('Boat still floating');
+    }
+
+    if (this.score === 40) {
+      this.notifyLevelUp();
+      this.currentDifficulty = 'medium'
+    }
+
+    if (this.score === 50) {
+      this.notifyLevelUp('You are half way !');
+    }
+
+    if (this.score === 60) {
+      this.notifyLevelUp();
       this.currentDifficulty = 'hard'
     }
 
-    if(this.score >= 100) {
+    if (this.score === 70) {
+      this.notifyLevelUp('Its getting serious..');
+    }
+
+    if (this.score === 80) {
+      this.notifyLevelUp('Almost there!');
+    }
+
+    if (this.score === 90) {
+      this.notifyLevelUp('So cloooose!!!');
+    }
+
+    if (this.score >= 100) {
       this.saveBestScore();
       this.scene.start('WinScene');
     }
+  }
+
+  notifyLevelUp(text) {
+    this.levelUpText.setText(text || 'Level UP');
+    setTimeout(() => {
+      this.levelUpText.setText('');
+    }, 1000);
+
   }
 
   listenToEvents() {
