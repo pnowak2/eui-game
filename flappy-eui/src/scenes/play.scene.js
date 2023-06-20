@@ -1,9 +1,35 @@
 import Phaser from 'phaser';
 import BaseScene from './base.scene';
 
+class InMemoryStorage {
+  constructor() {
+    this.data = {};
+  }
+
+  getItem(key) {
+    const value = this.data[key];
+    return value !== undefined ? JSON.parse(value) : null;
+  }
+
+  setItem(key, value) {
+    this.data[key] = JSON.stringify(value);
+  }
+
+  removeItem(key) {
+    delete this.data[key];
+  }
+
+  clear() {
+    this.data = {};
+  }
+}
+
+
 class PlayScene extends BaseScene {
   constructor(config) {
     super('PlayScene', config);
+
+    this.localStorage = new InMemoryStorage();
 
     this.velocity = 200;
     this.pipeVerticalDistanceRange = [100, 250];
@@ -212,7 +238,7 @@ class PlayScene extends BaseScene {
 
   createScore() {
     this.score = 0;
-    const bestScore = localStorage.getItem('eui-flappy:bestScore');
+    const bestScore = this.localStorage.getItem('eui-flappy:bestScore');
 
     const logo = this.add
       .image(34, 44, 'splash')
@@ -308,11 +334,11 @@ class PlayScene extends BaseScene {
   }
 
   saveBestScore() {
-    const bestScoreString = localStorage.getItem('eui-flappy:bestScore');
+    const bestScoreString = this.localStorage.getItem('eui-flappy:bestScore');
     const bestScore = bestScoreString && parseInt(bestScoreString, 10);
 
     if (!bestScore || this.score > bestScore) {
-      localStorage.setItem('eui-flappy:bestScore', this.score);
+      this.localStorage.setItem('eui-flappy:bestScore', this.score);
     }
   }
 
