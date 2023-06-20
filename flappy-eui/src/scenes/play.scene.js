@@ -105,7 +105,7 @@ class PlayScene extends BaseScene {
       fill: '#fff'
     }).setOrigin(0.5, 0.5);
 
-    this.pointsInfo = this.add.text(this.config.width / 2, this.instructionText.getBounds().bottom + 16, 'Get 100 points to win', {
+    this.pointsInfo = this.add.text(this.config.width / 2, this.instructionText.getBounds().bottom + 16, '100 points to win. Share your score on Teams.', {
       fontFamily: 'Arial',
       fontSize: '18px',
       fontWeight: 'normal',
@@ -374,39 +374,43 @@ class PlayScene extends BaseScene {
   }
 
   increaseDifficulty() {
+    if (this.score === 1) {
+      this.notifyLevelUp('Level 2XS');
+    }
+
     if (this.score === 10) {
-      this.notifyLevelUp('Keep flapping..');
+      this.notifyLevelUp('Level XS');
     }
 
     if (this.score === 20) {
-      this.notifyLevelUp();
+      this.notifyLevelUp('Level M');
       this.currentDifficulty = 'normal'
     }
 
     if (this.score === 30) {
-      this.notifyLevelUp('Boat still floating');
+      this.notifyLevelUp('Level L');
     }
 
     if (this.score === 40) {
-      this.notifyLevelUp();
+      this.notifyLevelUp('Level XL');
       this.currentDifficulty = 'medium'
     }
 
     if (this.score === 50) {
-      this.notifyLevelUp('You are half way !');
+      this.notifyLevelUp('Level 2XL');
     }
 
     if (this.score === 60) {
-      this.notifyLevelUp();
+      this.notifyLevelUp('Level 2XL');
       this.currentDifficulty = 'hard'
     }
 
     if (this.score === 70) {
-      this.notifyLevelUp('Its getting serious..');
+      this.notifyLevelUp('Level 3XL');
     }
 
     if (this.score === 80) {
-      this.notifyLevelUp('Almost there!');
+      this.notifyLevelUp('Level 4XL');
     }
 
     if (this.score === 90) {
