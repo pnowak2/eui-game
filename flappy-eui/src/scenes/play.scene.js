@@ -16,6 +16,7 @@ class PlayScene extends BaseScene {
     this.pipesToRender = 4;
 
     this.flapSound = null;
+    this.clickSound = null;
     this.hitSound = null;
     this.pointSound = null;
     this.city = null;
@@ -93,6 +94,7 @@ class PlayScene extends BaseScene {
     this.flapSound = this.sound.add('flap');
     this.hitSound = this.sound.add('hit');
     this.pointSound = this.sound.add('point');
+    this.clickSound = this.sound.add('click');
   }
 
   createInstructions() {
@@ -415,6 +417,9 @@ class PlayScene extends BaseScene {
     setTimeout(() => {
       this.levelUpText.setText('');
     }, 1000);
+    setTimeout(() => {
+      this.clickSound.play();
+    }, 500);
 
   }
 
