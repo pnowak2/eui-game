@@ -18,7 +18,7 @@ class SplashScene extends BaseScene {
   }
 
   preload() {
-    this.load.image('splash', 'assets/eui-logo.svg');
+    this.load.image('splash', 'assets/eui-logo.png');
     this.load.audio('music', 'assets/music.mp3');
   }
 
