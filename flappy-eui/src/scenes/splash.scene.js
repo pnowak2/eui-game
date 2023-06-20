@@ -29,7 +29,7 @@ class SplashScene extends BaseScene {
     this.cameras.main.setBackgroundColor('#333');
 
     const logo = this.add
-      .image(this.config.width / 2, this.config.height / 2, 'splash')
+      .image(this.config.width / 2, (this.config.height / 2) - 44, 'splash')
       .setAlpha(0)
       .setScale(0.5);
 
@@ -49,7 +49,14 @@ class SplashScene extends BaseScene {
       repeat: -1
     });
 
-    this.actionText = this.add.text(this.config.width / 2, logo.getBounds().bottom + 18, this.texts[0], {
+    this.add.text(this.config.width / 2, logo.getBounds().bottom + 18, 'Whoah, nice try!', {
+      fontFamily: 'Arial',
+      fontSize: '24px',
+      fontWeight: 'normal',
+      fill: '#fff'
+    }).setOrigin(0.5, 0);
+
+    this.actionText = this.add.text(this.config.width / 2, logo.getBounds().bottom + 48, this.texts[0], {
       fontFamily: 'Arial',
       fontSize: '14px',
       fontWeight: 'normal',

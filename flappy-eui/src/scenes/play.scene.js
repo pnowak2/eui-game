@@ -22,6 +22,7 @@ class PlayScene extends BaseScene {
     this.pipeVariantsCount = 20;
     this.score = 0;
     this.instructionText = '';
+    this.pointsInfo = '';
     this.scoreText = '';
     this.bestScoreText = '';
     this.isPaused = false;
@@ -87,11 +88,18 @@ class PlayScene extends BaseScene {
   }
 
   createInstructions() {
-    this.instructionText = this.add.text(this.config.width / 2, this.config.height / 2, 'Click or Space', {
+    this.instructionText = this.add.text(this.config.width / 2, this.config.height / 2, 'CLICK or hit SPACE', {
       fontFamily: 'Arial',
       fontSize: '24px',
       fontWeight: 'normal',
       fill: '#fff'
+    }).setOrigin(0.5, 0.5);
+
+    this.pointsInfo = this.add.text(this.config.width / 2, this.instructionText.getBounds().bottom + 10, 'Get 100 points to win', {
+      fontFamily: 'Arial',
+      fontSize: '18px',
+      fontWeight: 'normal',
+      fill: '#000'
     }).setOrigin(0.5, 0.5);
   }
 
@@ -242,6 +250,7 @@ class PlayScene extends BaseScene {
     this.isPaused = false;
     this.physics.resume();
     this.instructionText.setText('');
+    this.pointsInfo.setText('');
   }
 
   handleInputs() {
