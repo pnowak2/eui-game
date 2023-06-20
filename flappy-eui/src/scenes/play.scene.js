@@ -206,15 +206,29 @@ class PlayScene extends BaseScene {
     this.score = 0;
     const bestScore = localStorage.getItem('eui-flappy:bestScore');
 
-    this.scoreText = this.add.text(16, 16, `Score: ${this.score}`, {
+    const logo = this.add
+      .image(34, 44, 'splash')
+      .setScale(0.15)
+      .setOrigin(0.5);
+
+    this.tweens.add({
+      targets: logo,
+      scaleX: 0.17,
+      scaleY: 0.17,
+      duration: 1000,
+      yoyo: true,
+      repeat: -1
+    });
+
+    this.scoreText = this.add.text(70, 16, `Score: ${this.score}`, {
       fontFamily: 'Arial',
       fontSize: '32px',
       fontWeight: 'normal',
       fill: '#fff'
     });
-    this.bestScoreText = this.add.text(16, 52, `Best score: ${bestScore || 0}`, {
+    this.bestScoreText = this.add.text(70, 52, `My best score: ${bestScore || 0}`, {
       fontFamily: 'Arial',
-      fontSize: '18px',
+      fontSize: '17px',
       fill: '#fff'
     });
   }
