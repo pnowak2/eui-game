@@ -105,12 +105,15 @@ class PlayScene extends BaseScene {
       fill: '#fff'
     }).setOrigin(0.5, 0.5);
 
-    this.pointsInfo = this.add.text(this.config.width / 2, this.instructionText.getBounds().bottom + 10, 'Get 100 points to win', {
+    this.pointsInfo = this.add.text(this.config.width / 2, this.instructionText.getBounds().bottom + 16, 'Get 100 points to win', {
       fontFamily: 'Arial',
       fontSize: '18px',
       fontWeight: 'normal',
       fill: '#000'
     }).setOrigin(0.5, 0.5);
+
+    this.instructionText.setShadow(2, 2, 'rgba(0,0,0,0.7)', 2);
+    this.pointsInfo.setShadow(2, 2, 'rgba(255,255,255,0.5)', 2);
   }
 
   createCity() {
@@ -244,11 +247,14 @@ class PlayScene extends BaseScene {
       fontWeight: 'normal',
       fill: '#fff'
     });
+    this.scoreText.setShadow(2, 2, 'rgba(0,0,0,0.7)', 2);
+
     this.bestScoreText = this.add.text(70, 52, `My best score: ${bestScore || 0}`, {
       fontFamily: 'Arial',
       fontSize: '17px',
       fill: '#fff'
     });
+    this.bestScoreText.setShadow(2, 2, 'rgba(0,0,0,0.7)', 2);
 
     this.levelUpText = this.add.text(
       ...this.screenCenter,
@@ -258,6 +264,7 @@ class PlayScene extends BaseScene {
         fill: '#fff'
       }
     ).setOrigin(0.5);
+    this.levelUpText.setShadow(2, 2, 'rgba(0,0,0,0.7)', 2);
   }
 
   pause() {
