@@ -11,6 +11,7 @@ class PreloadScene extends BaseScene {
     this.load.audio('hit', 'assets/hit.mp3');
     this.load.image('cloud', 'assets/cloud.png');
     this.load.image('city', 'assets/city.png');
+    this.load.image('grass', 'assets/grass.png');
     this.load.image('pipe1', 'assets/pipes/pipe1.png');
     this.load.image('pipe2', 'assets/pipes/pipe2.png');
     this.load.image('pipe3', 'assets/pipes/pipe3.png');

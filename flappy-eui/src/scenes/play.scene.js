@@ -108,8 +108,8 @@ class PlayScene extends BaseScene {
 
   createCity() {
     this.city = this.add
-      .tileSprite(0, this.config.height, this.config.width, 381, 'city')
-      .setAlpha(0.2)
+      .tileSprite(0, this.config.height + 50, this.config.width, 566, 'city')
+      .setAlpha(0.4)
       .setOrigin(0, 1)
   }
 
@@ -401,14 +401,8 @@ class PlayScene extends BaseScene {
   }
 
   createGround() {
-    const ground = this.add
-      .rectangle(0, this.config.height, this.config.width, 24, 0x467a39)
-      .setOrigin(0, 1);
-    this.add
-      .rectangle(0, ground.getBounds().top, this.config.width, 2, 0x3f6e33)
-      .setOrigin(0, 1);
-    this.add
-      .rectangle(0, this.config.height, this.config.width, 4, 0x38622e)
+    const logo = this.add
+      .image(0, this.config.height, 'grass')
       .setOrigin(0, 1);
   }
 }
