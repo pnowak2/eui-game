@@ -378,44 +378,88 @@ class PlayScene extends BaseScene {
       this.notifyLevelUp('Level 2XS');
     }
 
+    // if (this.score === 7) {
+    //   this.notifyLevelUp('We will show you some fun facts');
+    // }
+
     if (this.score === 10) {
       this.notifyLevelUp('Level XS');
     }
+
+    // if (this.score === 14) {
+    //   this.notifyLevelUp('Did you know..');
+    // }
+
+    // if (this.score === 16) {
+    //   this.notifyLevelUp('eUI has mobile and ECL versions too ?');
+    // }
 
     if (this.score === 20) {
       this.notifyLevelUp('Level M');
       this.currentDifficulty = 'normal'
     }
 
+    // if (this.score === 24) {
+    //   this.notifyLevelUp('We provide also patterns and templates..');
+    // }
+
+    // if (this.score === 26) {
+    //   this.notifyLevelUp('with code examples');
+    // }
+
     if (this.score === 30) {
       this.notifyLevelUp('Level L');
     }
+
+    // if (this.score === 35) {
+    //   this.notifyLevelUp('eUI provides Figma designs');
+    // }
 
     if (this.score === 40) {
       this.notifyLevelUp('Level XL');
       this.currentDifficulty = 'medium'
     }
 
+    // if (this.score === 45) {
+    //   this.notifyLevelUp('Check also eui/cli tool to start fast');
+    // }
+
     if (this.score === 50) {
       this.notifyLevelUp('Level 2XL');
     }
+
+    // if (this.score === 55) {
+    //   this.notifyLevelUp('eUI is Open Source');
+    // }
 
     if (this.score === 60) {
       this.notifyLevelUp('Level 2XL');
       this.currentDifficulty = 'hard'
     }
 
+    // if (this.score === 65) {
+    //   this.notifyLevelUp('We provide design tokens as css vars');
+    // }
+
     if (this.score === 70) {
       this.notifyLevelUp('Level 3XL');
     }
+
+    // if (this.score === 75) {
+    //   this.notifyLevelUp('We always support 3 major versions');
+    // }
 
     if (this.score === 80) {
       this.notifyLevelUp('Level 4XL');
     }
 
-    if (this.score === 90) {
-      this.notifyLevelUp('So cloooose!!!');
-    }
+    // if (this.score === 85) {
+    //   this.notifyLevelUp('Anyone can contribute to eUI');
+    // }
+
+    // if (this.score === 90) {
+    //   this.notifyLevelUp('Now go for final trophy!');
+    // }
 
     if (this.score >= 100) {
       this.saveBestScore();
@@ -427,7 +471,7 @@ class PlayScene extends BaseScene {
     this.levelUpText.setText(text || 'Level UP');
     setTimeout(() => {
       this.levelUpText.setText('');
-    }, 1000);
+    }, 2000);
     setTimeout(() => {
       this.clickSound.play();
     }, 500);
