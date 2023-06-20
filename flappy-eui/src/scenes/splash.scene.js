@@ -9,10 +9,10 @@ class SplashScene extends BaseScene {
 
     this.texts = [
       'Loading eUI tokens..',
-      'Generating eUI awesomness..',
-      'Inflating eUI design system..',
-      'Compiling eUI icons..',
+      'Doing eUI awesomness..',
+      'Cooling eUI design system..',
       'Buffering eUI love..',
+      'More thinking..',
     ];
     this.actionText = '';
   }
@@ -37,7 +37,7 @@ class SplashScene extends BaseScene {
       targets: logo,
       alpha: 1,
       duration: 1000,
-      ease: 'Quan.InOut'
+      ease: 'Quad.InOut'
     });
 
     this.tweens.add({

@@ -23,7 +23,6 @@ class BaseScene extends Phaser.Scene {
 
     const graphics = this.add.graphics();
     const startColor = 0x1b4986;
-    // const endColor = 0x4786da;
     const endColor = 0xbfd0e4;
 
     graphics.fillGradientStyle(startColor, startColor, endColor, endColor, 1);
@@ -39,35 +38,9 @@ class BaseScene extends Phaser.Scene {
         .setOrigin(1, 1);
 
       backBtn.on('pointerup', () => {
-        this.scene.start('MenuScene');
+        this.scene.start('PlayScene');
       });
     }
-  }
-
-  createMenu(menu, setupMenuEvents) {
-    let lastMenuPositionY = 0;
-
-    menu.forEach(item => {
-      const menuPosition = [this.screenCenter[0], this.screenCenter[1] + lastMenuPositionY];
-      const textGO = this.add.text(...menuPosition, item.text, this.fontOptions)
-        .setInteractive()
-        .setOrigin(0.5, 1);
-
-      textGO.on('pointerover', () => {
-        textGO.setStyle({ fill: '#ff0' })
-      });
-
-      textGO.on('pointerout', () => {
-        textGO.setStyle({ fill: '#fff' })
-      });
-
-      textGO.on('pointerup', () => {
-        item.action && item.action(item.scene);
-        item.scene && this.scene.start(item.scene);
-      });
-
-      lastMenuPositionY += this.lineHeight;
-    });
   }
 }
 

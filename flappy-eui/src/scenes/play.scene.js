@@ -179,7 +179,7 @@ class PlayScene extends BaseScene {
     uPipe.x = rightMostX + pipeHorizontalDistance;
     uPipe.y = pipeVerticalPosition;
 
-    lPipe.x = uPipe.x + Phaser.Math.Between(-150, 150);
+    lPipe.x = uPipe.x + Phaser.Math.Between(-100, 100);
     lPipe.y = uPipe.y + pipeVerticalDistance;
 
     const lPipeNumber = Phaser.Math.Between(1, this.pipeVariantsCount);
@@ -352,8 +352,12 @@ class PlayScene extends BaseScene {
       this.currentDifficulty = 'normal'
     }
 
-    if (this.score === 20) {
+    if (this.score === 30) {
       this.currentDifficulty = 'hard'
+    }
+
+    if(this.score >= 100) {
+      this.scene.start('WinScene');
     }
   }
 
