@@ -11,8 +11,8 @@ class SplashScene extends BaseScene {
       'Loading eUI tokens..',
       'Doing eUI awesomness..',
       'Cooling eUI design system..',
+      'Calling eUI Divas..',
       'Buffering eUI love..',
-      'More thinking..',
     ];
     this.actionText = '';
   }
@@ -69,7 +69,7 @@ class SplashScene extends BaseScene {
 
     let counter = 1;
     this.time.addEvent({
-      delay: 500,
+      delay: 800,
       callback: () => {
         this.actionText.setText(this.texts[counter % this.texts.length])
         counter += 1;
