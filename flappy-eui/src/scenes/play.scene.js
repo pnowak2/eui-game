@@ -23,7 +23,7 @@ class PlayScene extends BaseScene {
     this.clouds = null;
     this.bird = null;
     this.pipes = null;
-    this.pipeVariantsCount = 20;
+    this.pipeVariantsCount = 30;
     this.score = 0;
     this.instructionText = '';
     this.pointsInfo = '';
