@@ -383,21 +383,21 @@ class PlayScene extends BaseScene {
     }
 
     if (this.score === 20) {
-      this.notifyLevelUp('Level M');
+      this.notifyLevelUp('Level S');
       this.currentDifficulty = 'normal'
     }
 
     if (this.score === 30) {
-      this.notifyLevelUp('Level L');
+      this.notifyLevelUp('Level M');
     }
 
     if (this.score === 40) {
-      this.notifyLevelUp('Level XL');
+      this.notifyLevelUp('Level L');
       this.currentDifficulty = 'medium'
     }
 
     if (this.score === 50) {
-      this.notifyLevelUp('Level 2XL');
+      this.notifyLevelUp('Level XL');
     }
 
     if (this.score === 60) {
@@ -414,7 +414,7 @@ class PlayScene extends BaseScene {
     }
 
     if (this.score === 90) {
-      this.notifyLevelUp('So cloooose!!!');
+      this.notifyLevelUp('Last mile! GO GO GO!');
     }
 
     if (this.score >= 100) {
