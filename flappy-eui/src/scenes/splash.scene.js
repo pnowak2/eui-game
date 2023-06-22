@@ -49,7 +49,7 @@ class SplashScene extends BaseScene {
       repeat: -1
     });
 
-    this.add.text(this.config.width / 2, logo.getBounds().bottom + 18, 'Whoah, nice try!', {
+    this.add.text(this.config.width / 2, logo.getBounds().bottom + 18, 'eUI Game Studios', {
       fontFamily: 'Arial',
       fontSize: '24px',
       fontWeight: 'normal',
